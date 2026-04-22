@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications · Sahithyan Sivakumaran</title>
+<meta name="description" content="Publications and conference presentations.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧠%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<div class="container">
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand">Sahithyan Sivakumaran</a>
+  <div class="nav-links">
+    <a href="index.html">About</a>
+    <a href="research.html">Research</a>
+    <a href="publications.html" class="active">Publications</a>
+    <a href="cv.html">CV</a>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">◐</button>
+  </div>
+</nav>
+
+<h1>Publications</h1>
+<p class="hero-subtitle" style="margin-top: 6px; margin-bottom: 28px;">Journal articles and conference presentations</p>
+
+<h2>Journal Articles</h2>
+
+<div class="pub">
+  <div class="pub-title">
+    Role of contingency in reward-emotion interactions during the categorization of emotional facial expressions
+  </div>
+  <div class="pub-authors">
+    <span class="self">Sivakumaran, S.</span>, Chakravarthula, L., &amp; Padmala, S.
+  </div>
+  <div class="pub-venue">Motivation Science · 2024</div>
+  <div class="pub-links">
+    <a href="https://psycnet.apa.org/doi/10.1037/mot0000330" target="_blank" rel="noopener">DOI</a>
+    <a href="https://psycnet.apa.org/doi/10.1037/mot0000330" target="_blank" rel="noopener">Publisher</a>
+  </div>
+</div>
+
+<h2>Conference Presentations</h2>
+
+<div class="pub">
+  <div class="pub-title">
+    Differential effects of performance contingent and non-contingent rewards
+    <span class="pub-tag">Poster</span>
+  </div>
+  <div class="pub-authors">
+    Krishnan, A., <span class="self">Sivakumaran, S.</span>, &amp; Padmala, S.
+  </div>
+  <div class="pub-venue">11th Annual Conference of Cognitive Science · IIT-Kanpur · December 2024</div>
+</div>
+
+<div class="pub">
+  <div class="pub-title">
+    Role of contingency in reward-emotion interactions
+    <span class="pub-tag">Poster</span>
+  </div>
+  <div class="pub-authors">
+    <span class="self">Sivakumaran, S.</span>, Chakravarthula, L., &amp; Padmala, S.
+  </div>
+  <div class="pub-venue">10th Annual Conference of Cognitive Science · IIT-Kanpur · December 2023</div>
+</div>
+
+<div class="pub">
+  <div class="pub-title">
+    Intertemporal choice under uncertainty
+    <span class="pub-tag">Talk</span>
+  </div>
+  <div class="pub-authors">
+    <span class="self">Sivakumaran, S.</span>, &amp; Srinivasan, N.
+  </div>
+  <div class="pub-venue">7th Annual Conference of Cognitive Science · IISc Bangalore · January 2021</div>
+</div>
+
+<footer class="footer">
+  © 2025 Sahithyan Sivakumaran · Last updated April 2026
+</footer>
+
+</div>
+
+<script>
+(function() {
+  var root = document.documentElement;
+  var toggle = document.getElementById('theme-toggle');
+  var saved = localStorage.getItem('theme');
+  if (saved) root.setAttribute('data-theme', saved);
+
+  toggle.addEventListener('click', function() {
+    var current = root.getAttribute('data-theme');
+    var isDark = current === 'dark' ||
+      (!current && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+})();
+</script>
+
+</body>
+</html>

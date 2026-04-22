@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research · Sahithyan Sivakumaran</title>
+<meta name="description" content="Research interests and projects in affective neuroscience and cognitive psychology.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧠%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<div class="container">
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand">Sahithyan Sivakumaran</a>
+  <div class="nav-links">
+    <a href="index.html">About</a>
+    <a href="research.html" class="active">Research</a>
+    <a href="publications.html">Publications</a>
+    <a href="cv.html">CV</a>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">◐</button>
+  </div>
+</nav>
+
+<h1>Research</h1>
+<p class="hero-subtitle" style="margin-top: 6px; margin-bottom: 28px;">Affective neuroscience · fMRI · Decision-making</p>
+
+<p>
+My work combines <strong>behavioral experiments</strong>, <strong>fMRI neuroimaging</strong>, and <strong>computational modeling</strong> to study how motivational and affective states shape human cognition.
+</p>
+
+<h2>Current Projects — Hartley Lab, NYU</h2>
+
+<h3>Reward, affect, and learning across development</h3>
+<p><em>PhD project — ongoing (2024–present)</em></p>
+<p>
+Investigating how reward learning and emotional regulation develop across adolescence, and how individual differences in these processes relate to mental health outcomes. This work combines large-scale behavioral paradigms with neuroimaging approaches.
+</p>
+
+<h2>Previous Research</h2>
+
+<h3>Reward-emotion interactions in facial expression categorization</h3>
+<p><em>Centre for Neuroscience, IISc Bangalore · 2021–2024 · PI: Dr. Srikanth Padmala</em></p>
+<p>
+I examined how <strong>performance-contingent versus non-contingent rewards</strong> differentially modulate the categorization of emotional facial expressions. Using behavioral experiments and fMRI, we found that the reward–emotion interaction is critically dependent on contingency structure — only rewards tied to performance outcomes reliably enhance the processing of emotionally salient faces.
+</p>
+<p>
+📄 Published in <em>Motivation Science</em> (2024) —
+<a href="https://psycnet.apa.org/doi/10.1037/mot0000330" target="_blank" rel="noopener">view paper</a>
+</p>
+
+<h3>Spatial navigation and memory</h3>
+<p><em>Centre for Neuroscience, IISc Bangalore · 2020–2021 · PI: Dr. Sachin Deshmukh</em></p>
+<p>
+Contributed to research in the Space Lab investigating the neural bases of spatial navigation and memory encoding in rodents, using electrophysiological recordings and behavioral paradigms.
+</p>
+
+<h3>Intertemporal choice under uncertainty</h3>
+<p><em>CBCS, University of Allahabad · 2018–2020 · PI: Prof. Narayanan Srinivasan</em></p>
+<p>
+My M.Sc dissertation examined how uncertainty modulates intertemporal preferences — how people choose between smaller immediate rewards and larger delayed rewards when outcomes are probabilistic. Presented at the 7th Annual Conference of Cognitive Science, IISc Bangalore (2021).
+</p>
+
+<h2>Methods</h2>
+
+<h3>Neuroimaging</h3>
+<p>
+fMRI acquisition (MPRAGE, EPI-BOLD) · Preprocessing · Whole-brain and ROI analysis · Functional connectivity (generalized PPI, beta-series correlation) · MVPA · Software: SPM, FSL, AFNI
+</p>
+
+<h3>Behavioral experiments</h3>
+<p>
+PsychoPy · Psychtoolbox · E-Prime · Gorilla · Pavlovia (online experiments)
+</p>
+
+<h3>Computation &amp; statistics</h3>
+<p>
+MATLAB · Python · R · JASP · SPSS · Mixed-effects models
+</p>
+
+<footer class="footer">
+  © 2025 Sahithyan Sivakumaran · Last updated April 2026
+</footer>
+
+</div>
+
+<script>
+(function() {
+  var root = document.documentElement;
+  var toggle = document.getElementById('theme-toggle');
+  var saved = localStorage.getItem('theme');
+  if (saved) root.setAttribute('data-theme', saved);
+
+  toggle.addEventListener('click', function() {
+    var current = root.getAttribute('data-theme');
+    var isDark = current === 'dark' ||
+      (!current && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+})();
+</script>
+
+</body>
+</html>
