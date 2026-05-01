@@ -380,6 +380,92 @@ li {
   text-transform: uppercase;
 }
 
+/* --- Writing list (index page) --- */
+.writing-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.writing-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: 1px dashed var(--border-soft);
+  text-decoration: none;
+  gap: 18px;
+  transition: color 0.2s;
+}
+
+.writing-item:last-child {
+  border-bottom: none;
+}
+
+.writing-item:hover {
+  border-bottom-color: var(--border-soft);
+}
+
+.writing-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+
+.writing-item:hover .writing-title {
+  color: var(--accent);
+}
+
+.writing-date {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text-soft);
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+/* --- Writing article (individual post) --- */
+.writing-back {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  text-decoration: none;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.writing-back:hover {
+  color: var(--accent);
+}
+
+.writing-article h1 {
+  margin-bottom: 6px;
+}
+
+.writing-meta {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  color: var(--text-soft);
+  font-style: italic;
+  margin-bottom: 32px;
+}
+
+.writing-article p {
+  margin-bottom: 20px;
+}
+
+.writing-article code {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
 /* --- CV specific --- */
 .cv-entry {
   display: flex;
@@ -500,7 +586,8 @@ li {
   }
 
   .news-list li,
-  .cv-entry {
+  .cv-entry,
+  .writing-item {
     flex-direction: column;
     gap: 2px;
   }
