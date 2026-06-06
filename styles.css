@@ -104,12 +104,6 @@ body {
   margin-bottom: 40px;
   flex-wrap: wrap;
   gap: 12px;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
 }
 
 .nav-brand {
@@ -548,6 +542,7 @@ li {
   height: 100vh;
   pointer-events: none;
   z-index: 0;
+  display: block;
 }
 
 /* --- Footer --- */
