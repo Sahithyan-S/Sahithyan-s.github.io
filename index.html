@@ -214,14 +214,14 @@ function spawn(wide){
   if(!inBrain(nx,ny))return null;
   var dk=isDark();
   var maj=Math.random()<0.10;
-  var a=dk?(0.45+Math.random()*0.35):(0.28+Math.random()*0.22);
+  var a=dk?(0.28+Math.random()*0.22):(0.16+Math.random()*0.14);
   if(maj)a*=1.25;
   var dw=densityW(nx,ny);
   var sp=normToScreen(nx,ny,b);
   return{nx:nx,ny:ny,x:sp.x,y:sp.y,
     h:hue(nx,ny,dk),
-    s:dk?(72+Math.random()*20):(50+Math.random()*18),
-    l:dk?(50+Math.random()*20):(24+Math.random()*14),
+    s:dk?(60+Math.random()*18):(42+Math.random()*15),
+    l:dk?(38+Math.random()*16):(18+Math.random()*10),
     a:a,w:maj?(1.2+Math.random()*1.0):(0.35+Math.random()*0.55),
     sp:(0.0006+Math.random()*0.0010)*(1+dw*0.2),
     life:Math.floor(120+Math.random()*220),
@@ -232,13 +232,51 @@ function normToScreen(nx,ny,b){return{x:b.x+nx*b.w,y:b.y+ny*b.h};}
 
 function rebuild(){
   BOX=getBox(); pts=[];
-  /* fill canvas immediately with bg color so there's no transparent flash */
+  /* fill canvas with new bg color immediately */
   ctx.globalAlpha=1;
   ctx.fillStyle=isDark()?BG_DARK:BG_LIGHT;
   ctx.fillRect(0,0,W,H);
   for(var i=0;i<N;i++){
     var p=spawn(true);
-    if(p){p.maxLife=p.life;p.life=Math.floor(Math.random()*p.life);pts.push(p);}
+    if(p){
+      p.maxLife=p.life;
+      p.life=Math.floor(Math.random()*p.life);
+      p.fi=1; /* skip fade-in — particles appear at full brightness immediately */
+      pts.push(p);
+    }
+  }
+  /* pre-warm: run 80 silent frames so canvas looks full on switch, not empty */
+  for(var f=0;f<80;f++) prewarmFrame();
+}
+
+/* ── Pre-warm: advance particles without trail fade so canvas fills up instantly ── */
+function prewarmFrame(){
+  var dk=isDark(),b=BOX; if(!b)return;
+  ctx.lineCap='round';
+  for(var i=0;i<pts.length;i++){
+    var p=pts[i];
+    var ang=angle(p.nx,p.ny);
+    var ox=p.x,oy=p.y;
+    p.nx+=Math.cos(ang)*p.sp;
+    p.ny+=Math.sin(ang)*p.sp;
+    p.life--;
+    var sc=normToScreen(p.nx,p.ny,b);
+    p.x=sc.x; p.y=sc.y;
+    if(p.life<=0||!inBrain(p.nx,p.ny)){
+      var np=spawn(false)||spawn(true);
+      if(np){np.maxLife=np.life;np.fi=1;pts[i]=np;}
+      continue;
+    }
+    var lr=p.life/p.maxLife;
+    var fo=lr<0.12?lr/0.12:1.0;
+    var a=p.a*fo;
+    if(a<0.02)continue;
+    ctx.beginPath();
+    ctx.moveTo(ox,oy);
+    ctx.lineTo(p.x,p.y);
+    ctx.strokeStyle='hsla('+(p.h+T*8).toFixed(1)+','+p.s+'%,'+p.l+'%,'+a.toFixed(3)+')';
+    ctx.lineWidth=p.w;
+    ctx.stroke();
   }
 }
 
