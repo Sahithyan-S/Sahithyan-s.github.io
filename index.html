@@ -104,6 +104,7 @@ Before joining NYU, I spent four years as a Project Associate at the <strong>Cen
     var next = isDark ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
+    window.dispatchEvent(new CustomEvent('themechange'));
   });
 })();
 
@@ -284,6 +285,7 @@ function frame(){
 
 resize();
 frame();
+window.addEventListener('themechange', rebuild);
 window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',function(){
   if(!root.getAttribute('data-theme'))rebuild();
 });
