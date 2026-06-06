@@ -6,6 +6,10 @@
 <title>Sahithyan Sivakumaran</title>
 <meta name="description" content="PhD student in Cognition & Perception at NYU. Research on reward, affect, and decision-making.">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* Canvas is the background on this page — body must be transparent */
+  body { background: transparent !important; }
+</style>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧠%3C/text%3E%3C/svg%3E">
 </head>
 <body>
@@ -227,6 +231,10 @@ function normToScreen(nx,ny,b){return{x:b.x+nx*b.w,y:b.y+ny*b.h};}
 
 function rebuild(){
   BOX=getBox(); pts=[];
+  /* fill canvas immediately with bg color so there's no transparent flash */
+  ctx.globalAlpha=1;
+  ctx.fillStyle=isDark()?BG_DARK:BG_LIGHT;
+  ctx.fillRect(0,0,W,H);
   for(var i=0;i<N;i++){
     var p=spawn(true);
     if(p){p.maxLife=p.life;p.life=Math.floor(Math.random()*p.life);pts.push(p);}
@@ -239,7 +247,7 @@ function frame(){
   T+=0.004;
   var dk=isDark(),b=BOX; if(!b)return;
 
-  /* fade trail — must match real site bg */
+  /* fade trail — semi-transparent bg rect each frame creates glowing tail effect */
   ctx.globalAlpha=dk?0.030:0.038;
   ctx.fillStyle=dk?BG_DARK:BG_LIGHT;
   ctx.fillRect(0,0,W,H);
